@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'homePageShow' %}
+
+{% block body %}
+
+	<div class="jumbotron text-center btn-secondary">
+		<h1>
+			bienvenue sur la homePageShow !
+		</h1>
+
+		<p>
+			Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum. Wikipédia
+
+		</p>
+	</div>
+
+	<div class="container">
+		<h2>Les derniers biens</h2>
+
+		<div class="row flex">
+			{% for property in properties %}
+				<div class="col-3">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">
+								<a href="{{ path("property.show", {id: property.id, slug: property.slug }) }}">{{ property.title }}</a>
+								<p class="card-text">
+									{{ property.city }},
+									{{ property.postalCode }}
+								</p>
+								<div class="text-primary" style="font-weight:bold;font-size:22px;">
+									{{ property.getFormattedPrice }}
+									€
+								</div>
+							</h5>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+
+
+		</div>
+
+	</div>
+
+{% endblock %}
